@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		4890A2D82832785F00E26384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890A2D72832785F00E26384 /* AppDelegate.swift */; };
 		4890A2DA2832785F00E26384 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890A2D92832785F00E26384 /* SceneDelegate.swift */; };
-		4890A2DC2832785F00E26384 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890A2DB2832785F00E26384 /* ViewController.swift */; };
+		4890A2DC2832785F00E26384 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890A2DB2832785F00E26384 /* MainScreen.swift */; };
 		4890A2DF2832785F00E26384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4890A2DD2832785F00E26384 /* Main.storyboard */; };
 		4890A2E12832786200E26384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4890A2E02832786200E26384 /* Assets.xcassets */; };
 		4890A2E42832786200E26384 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4890A2E22832786200E26384 /* LaunchScreen.storyboard */; };
+		48A07DAB28339DFA00A919BA /* AddFoodScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A07DAA28339DFA00A919BA /* AddFoodScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4890A2D42832785F00E26384 /* GoDagens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoDagens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4890A2D72832785F00E26384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4890A2D92832785F00E26384 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4890A2DB2832785F00E26384 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4890A2DB2832785F00E26384 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		4890A2DE2832785F00E26384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4890A2E02832786200E26384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4890A2E32832786200E26384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4890A2E52832786200E26384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48A07DAA28339DFA00A919BA /* AddFoodScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				4890A2D72832785F00E26384 /* AppDelegate.swift */,
 				4890A2D92832785F00E26384 /* SceneDelegate.swift */,
-				4890A2DB2832785F00E26384 /* ViewController.swift */,
+				4890A2DB2832785F00E26384 /* MainScreen.swift */,
+				48A07DAA28339DFA00A919BA /* AddFoodScreen.swift */,
 				4890A2DD2832785F00E26384 /* Main.storyboard */,
 				4890A2E02832786200E26384 /* Assets.xcassets */,
 				4890A2E22832786200E26384 /* LaunchScreen.storyboard */,
@@ -138,9 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4890A2DC2832785F00E26384 /* ViewController.swift in Sources */,
+				4890A2DC2832785F00E26384 /* MainScreen.swift in Sources */,
 				4890A2D82832785F00E26384 /* AppDelegate.swift in Sources */,
 				4890A2DA2832785F00E26384 /* SceneDelegate.swift in Sources */,
+				48A07DAB28339DFA00A919BA /* AddFoodScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

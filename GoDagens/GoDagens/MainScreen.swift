@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainScreen: UIViewController {
 
     private let textView: UITextView = {
         let textView = UITextView()
@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         textView.textColor = .black
         textView.font = UIFont(name: textView.font!.fontName, size: 25)
         textView.textAlignment = .center
+        textView.isEditable = false
         return textView
     }()
     
@@ -37,7 +38,7 @@ class ViewController: UIViewController {
         "Spaghetti och Köttfärssås",
         "Hamburgare och pommes",
         "Korv med bröd",
-        "Världens längsa namn på en maträtt som ska täcka massor med yta"
+        "Världens längsa namn på en maträtt som ska täcka massor med yta skriver bara massa för att se hur mycket text det fyller upp med"
     ]
     
     override func viewDidLoad() {
@@ -46,8 +47,7 @@ class ViewController: UIViewController {
         view.addSubview(textView)
         
         view.addSubview(imageView)
-        imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        imageView.center = view.center
+        imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+200, width: 300, height: 300)
         
         view.addSubview(randomButton)
         randomButton.addTarget(self, action: #selector(randomizeFood), for: .touchUpInside)
@@ -61,10 +61,10 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        textView.frame = CGRect(x: 50, y: 50, width: 300, height: 300)
+        textView.frame = CGRect(x: 50, y: 50, width: 300, height: 200)
+        textView.centerVertically()
         
         randomButton.frame = CGRect(x: 20, y: view.frame.size.height-200-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
-        
     }
     
     func getRandomPhoto() {
@@ -76,4 +76,12 @@ class ViewController: UIViewController {
         imageView.image = UIImage(data: data)
     }
 }
-
+extension UITextView {
+    func centerVertically() {
+        let fittingSize = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
+        let size = sizeThatFits(fittingSize)
+        let topOffset = (bounds.size.height - size.height * zoomScale) / 2
+        let positiveTopOffset = max(1, topOffset)
+        contentOffset.y = -positiveTopOffset
+    }
+}
