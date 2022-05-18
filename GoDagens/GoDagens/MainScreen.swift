@@ -65,7 +65,6 @@ class MainScreen: UIViewController {
         textView.centerVertically()
         
         randomButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
-        
     }
     
     func getRandomPhoto() {
@@ -77,6 +76,7 @@ class MainScreen: UIViewController {
         imageView.image = UIImage(data: data)
     }
 }
+
 extension UITextView {
     func centerVertically() {
         let fittingSize = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)

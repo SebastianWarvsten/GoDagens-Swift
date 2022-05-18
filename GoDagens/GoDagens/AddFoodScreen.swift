@@ -39,23 +39,35 @@ class AddFoodScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add UI
         view.addSubview(nameTextField)
         view.addSubview(imageView)
         view.addSubview(descriptionTextField)
         view.addSubview(addButton)
-        getRandomPhoto()
         
+        // Startup functionality
+        addButton.addTarget(self, action: #selector(alertbox), for: .touchUpInside)
+        getRandomPhoto()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         nameTextField.frame = CGRect(x: 50, y: view.safeAreaInsets.top, width: view.frame.size.width-100, height: 30)
-        // center.x - size.width / 2
+
         imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+80, width: 300, height: 300)
         
         descriptionTextField.frame = CGRect(x: (view.frame.width-300)/2, y: 480, width: 300, height: 280)
         
         addButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
+    }
+    
+    // Alert Box
+    @objc func alertbox() {
+        let alert = UIAlertController(title: "Maträtt tillagd", message: "En maträtt har blivit tillagd till listan", preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Ta bort getRandomPhoto när det är fixat
