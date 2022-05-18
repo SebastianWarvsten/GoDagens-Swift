@@ -64,7 +64,8 @@ class MainScreen: UIViewController {
         textView.frame = CGRect(x: 50, y: 50, width: 300, height: 200)
         textView.centerVertically()
         
-        randomButton.frame = CGRect(x: 20, y: view.frame.size.height-200-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
+        randomButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
+        
     }
     
     func getRandomPhoto() {

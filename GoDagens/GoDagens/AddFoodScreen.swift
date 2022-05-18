@@ -24,7 +24,7 @@ class AddFoodScreen: UIViewController {
     
     private let descriptionTextField: UITextView = {
         let textField = UITextView()
-        textField.backgroundColor = .lightGray
+        textField.layer.borderWidth = 1
         return textField
     }()
     
@@ -51,9 +51,9 @@ class AddFoodScreen: UIViewController {
         super.viewDidLayoutSubviews()
         nameTextField.frame = CGRect(x: 50, y: view.safeAreaInsets.top, width: view.frame.size.width-100, height: 30)
         // center.x - size.width / 2
-        imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+100, width: 300, height: 300)
+        imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+80, width: 300, height: 300)
         
-        descriptionTextField.frame = CGRect(x: (view.frame.width-300)/2, y: 500, width: 300, height: 280)
+        descriptionTextField.frame = CGRect(x: (view.frame.width-300)/2, y: 480, width: 300, height: 280)
         
         addButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
     }

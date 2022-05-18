@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Slumpa Mat-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainScreen" customModule="GoDagens" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,13 +18,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="7SR-ub-kGx"/>
+                    <tabBarItem key="tabBarItem" title="Slumpa Mat" image="house.circle" catalog="system" id="7SR-ub-kGx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="884.05797101449286" y="59.598214285714285"/>
         </scene>
-        <!--Item-->
+        <!--Lägg till maträtt-->
         <scene sceneID="sjn-cd-aJX">
             <objects>
                 <viewController id="Hmr-yL-EOa" customClass="AddFoodScreen" customModule="GoDagens" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,7 +34,7 @@
                         <viewLayoutGuide key="safeArea" id="UuL-F7-qay"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="yB7-ez-FyO"/>
+                    <tabBarItem key="tabBarItem" title="Lägg till maträtt" image="plus.circle" catalog="system" id="yB7-ez-FyO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyQ-Ig-BFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,6 +60,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="house.circle" catalog="system" width="128" height="121"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
