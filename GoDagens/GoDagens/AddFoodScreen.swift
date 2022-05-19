@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class AddFoodScreen: UIViewController {
+    
+    let db = Firestore.firestore()
     
     private let nameTextField: UITextField = {
         let textField = UITextField()
@@ -46,6 +49,7 @@ class AddFoodScreen: UIViewController {
         view.addSubview(addButton)
         
         // Startup functionality
+        addButton.addTarget(self, action: #selector(addFood), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(alertbox), for: .touchUpInside)
         getRandomPhoto()
     }
@@ -69,6 +73,11 @@ class AddFoodScreen: UIViewController {
 
         self.present(alert, animated: true, completion: nil)
     }
+    
+    // Add new collection to Firebase
+        @objc func addFood() {
+            db.collection("Food").addDocument(data: ["Namn": "Hamburgare", "Tillagningstid": 10, "Ingredienser": ["Hamburgekött", "Ost", "Tomat", "Sallad", "Rödlök", "Saltgurka", "Dressing", "Hamburgebröd"]])
+        }
     
     // Ta bort getRandomPhoto när det är fixat
     func getRandomPhoto() {
