@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Firebase
 
 class MainScreen: UIViewController {
 
+    let db = Firestore.firestore()
+    
     private let textView: UITextView = {
         let textView = UITextView()
         textView.text = "Maträttens namn"
@@ -21,7 +24,7 @@ class MainScreen: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.backgroundColor = .black
         return imageView
     }()
@@ -33,13 +36,8 @@ class MainScreen: UIViewController {
         button.setTitleColor(.white, for: .normal)
         return button
     }()
-    
-    let mat: [String] = [
-        "Spaghetti och Köttfärssås",
-        "Hamburgare och pommes",
-        "Korv med bröd",
-        "Världens längsa namn på en maträtt som ska täcka massor med yta skriver bara massa för att se hur mycket text det fyller upp med"
-    ]
+
+    var matArray = [FoodModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +48,8 @@ class MainScreen: UIViewController {
         imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+200, width: 300, height: 300)
         
         view.addSubview(randomButton)
-        randomButton.addTarget(self, action: #selector(randomizeFood), for: .touchUpInside)
-        getRandomPhoto()
-    }
-    
-    @objc func randomizeFood() {
-        getRandomPhoto()
-        textView.text = mat.randomElement()
+        randomButton.addTarget(self, action: #selector(getRandomPhoto), for: .touchUpInside)
+        getInitialView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,13 +60,39 @@ class MainScreen: UIViewController {
         randomButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
     }
     
-    func getRandomPhoto() {
-        let urlString = "https://source.unsplash.com/random/300x300"
-        let url = URL(string: urlString)!
+    func getInitialView() {
+        db.collection("Food").getDocuments { snapshot, err in
+            if err == nil && snapshot != nil {
+                
+                for document in snapshot!.documents {
+
+                    let namn = document.data()["Namn"]
+                    let descrip = document.data()["Beskrivning"]
+                    let imageURL = document.data()["imageURL"]
+                    let time = document.data()["Tillagningstid"]
+                    let ingredients = document.data()["Ingredienser"]
+                    
+                    var foodObject = FoodModel()
+                    foodObject.name = namn as! String
+                    foodObject.imageURL = imageURL as! String
+                    foodObject.ingrediets = ingredients as! [String]
+                    foodObject.descrip = descrip as! String
+                    foodObject.time = time as! Int
+                    self.matArray.append(foodObject)
+                }
+                self.getRandomPhoto()
+            }
+        }
+    }
+    
+    @objc func getRandomPhoto() {
+        let randomInt = Int.random(in: 0...self.matArray.count-1)
+        self.textView.text = self.matArray[randomInt].name
+        let url = URL(string: self.matArray[randomInt].imageURL)!
         guard let data = try? Data(contentsOf: url) else {
             return
         }
-        imageView.image = UIImage(data: data)
+        self.imageView.image = UIImage(data: data)
     }
 }
 
