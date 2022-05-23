@@ -79,7 +79,12 @@ class AddFoodScreen: UIViewController {
         @objc func addFood() {
             let namn = nameTextField.text ?? "Maträtt"
             let beskrivning = descriptionTextField.text ?? "Laga i stekpannan osv"
-            let imageURL = imageURLTextField.text ?? "https://source.unsplash.com/random/300x300"
-            db.collection("Food").addDocument(data: ["Namn": namn, "Beskrivning": beskrivning, "Tillagningstid": 10, "imageURL": imageURL, "Ingredienser": ["Hamburgekött", "Ost", "Tomat", "Sallad", "Rödlök", "Saltgurka", "Dressing", "Hamburgebröd"]])
+            var imageURL: String;
+            if (imageURLTextField.text != nil) && (imageURLTextField.text!.count > 0) {
+                imageURL = imageURLTextField.text!
+            }else{
+                imageURL = "https://www.instandngs4p.eu/wp-content/themes/fox/images/placeholder.jpg"
+            }
+            db.collection("Food").addDocument(data: ["Namn": namn, "Beskrivning": beskrivning, "Tillagningstid": 10, "imageURL": imageURL, "Ingredienser": ["Tomat", "Sallad"]])
         }
 }
