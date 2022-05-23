@@ -49,7 +49,6 @@ class MainScreen: UIViewController {
         
         view.addSubview(randomButton)
         randomButton.addTarget(self, action: #selector(getRandomPhoto), for: .touchUpInside)
-        getInitialView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -60,7 +59,13 @@ class MainScreen: UIViewController {
         randomButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getInitialView()
+    }
+    
     func getInitialView() {
+        self.matArray.removeAll()
         db.collection("Food").getDocuments { snapshot, err in
             if err == nil && snapshot != nil {
                 
