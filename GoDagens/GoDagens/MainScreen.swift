@@ -48,7 +48,7 @@ class MainScreen: UIViewController {
         imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+200, width: 300, height: 300)
         
         view.addSubview(randomButton)
-        randomButton.addTarget(self, action: #selector(getRandomPhoto), for: .touchUpInside)
+        randomButton.addTarget(self, action: #selector(getRandomFood), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,10 +61,10 @@ class MainScreen: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        getInitialView()
+        updateMatArray()
     }
     
-    func getInitialView() {
+    func updateMatArray() {
         self.matArray.removeAll()
         db.collection("Food").getDocuments { snapshot, err in
             if err == nil && snapshot != nil {
@@ -85,12 +85,14 @@ class MainScreen: UIViewController {
                     foodObject.time = time as! Int
                     self.matArray.append(foodObject)
                 }
-                self.getRandomPhoto()
+                if self.imageView.image == nil {
+                    self.getRandomFood()
+                }
             }
         }
     }
     
-    @objc func getRandomPhoto() {
+    @objc func getRandomFood() {
         let randomInt = Int.random(in: 0...self.matArray.count-1)
         self.textView.text = self.matArray[randomInt].name
         let url = URL(string: self.matArray[randomInt].imageURL)!
