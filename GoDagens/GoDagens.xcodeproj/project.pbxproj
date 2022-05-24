@@ -13,6 +13,7 @@
 		4890A2DF2832785F00E26384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4890A2DD2832785F00E26384 /* Main.storyboard */; };
 		4890A2E12832786200E26384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4890A2E02832786200E26384 /* Assets.xcassets */; };
 		4890A2E42832786200E26384 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4890A2E22832786200E26384 /* LaunchScreen.storyboard */; };
+		489A276F283CE44100D05AC6 /* FoodDescriptionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489A276E283CE44100D05AC6 /* FoodDescriptionScreen.swift */; };
 		489BB97D2837AC5200E2A6D6 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BB97C2837AC5200E2A6D6 /* FoodModel.swift */; };
 		48A07DAB28339DFA00A919BA /* AddFoodScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A07DAA28339DFA00A919BA /* AddFoodScreen.swift */; };
 		48A07DAD2834DF4600A919BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48A07DAC2834DF4500A919BA /* GoogleService-Info.plist */; };
@@ -35,6 +36,7 @@
 		4890A2E02832786200E26384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4890A2E32832786200E26384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4890A2E52832786200E26384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		489A276E283CE44100D05AC6 /* FoodDescriptionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDescriptionScreen.swift; sourceTree = "<group>"; };
 		489BB97C2837AC5200E2A6D6 /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
 		48A07DAA28339DFA00A919BA /* AddFoodScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodScreen.swift; sourceTree = "<group>"; };
 		48A07DAC2834DF4500A919BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				489BB97C2837AC5200E2A6D6 /* FoodModel.swift */,
 				4890A2D92832785F00E26384 /* SceneDelegate.swift */,
 				4890A2DB2832785F00E26384 /* MainScreen.swift */,
+				489A276E283CE44100D05AC6 /* FoodDescriptionScreen.swift */,
 				48A07DAA28339DFA00A919BA /* AddFoodScreen.swift */,
 				4890A2DD2832785F00E26384 /* Main.storyboard */,
 				4890A2E02832786200E26384 /* Assets.xcassets */,
@@ -181,6 +184,7 @@
 				4890A2DC2832785F00E26384 /* MainScreen.swift in Sources */,
 				4890A2D82832785F00E26384 /* AppDelegate.swift in Sources */,
 				4890A2DA2832785F00E26384 /* SceneDelegate.swift in Sources */,
+				489A276F283CE44100D05AC6 /* FoodDescriptionScreen.swift in Sources */,
 				48A07DAB28339DFA00A919BA /* AddFoodScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

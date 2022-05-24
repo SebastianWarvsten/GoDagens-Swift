@@ -38,6 +38,7 @@ class MainScreen: UIViewController {
     }()
 
     var matArray = [FoodModel]()
+    var randomInt = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,9 @@ class MainScreen: UIViewController {
         
         view.addSubview(randomButton)
         randomButton.addTarget(self, action: #selector(getRandomFood), for: .touchUpInside)
+        
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap)))
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,6 +66,16 @@ class MainScreen: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateMatArray()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! FoodDescriptionScreen
+        destinationVC.matArray = self.matArray
+        destinationVC.selectedFood = self.randomInt
+    }
+    
+    @objc func imageTap() {
+        performSegue(withIdentifier: "showFoodSegue", sender: self)
     }
     
     func updateMatArray() {
@@ -93,7 +107,7 @@ class MainScreen: UIViewController {
     }
     
     @objc func getRandomFood() {
-        let randomInt = Int.random(in: 0...self.matArray.count-1)
+        randomInt = Int.random(in: 0...self.matArray.count-1)
         self.textView.text = self.matArray[randomInt].name
         let url = URL(string: self.matArray[randomInt].imageURL)!
         guard let data = try? Data(contentsOf: url) else {

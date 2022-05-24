@@ -85,6 +85,9 @@ class AddFoodScreen: UIViewController {
             }else{
                 imageURL = "https://www.instandngs4p.eu/wp-content/themes/fox/images/placeholder.jpg"
             }
-            db.collection("Food").addDocument(data: ["Namn": namn, "Beskrivning": beskrivning, "Tillagningstid": 10, "imageURL": imageURL, "Ingredienser": ["Tomat", "Sallad"]])
+            let ingredienser = [String](["Gurka", "Tomat", "Skinka"])
+            let tillagningstid = 10
+            
+            db.collection("Food").addDocument(data: ["Namn": namn, "Beskrivning": beskrivning, "Tillagningstid": tillagningstid, "imageURL": imageURL, "Ingredienser": ingredienser])
         }
 }

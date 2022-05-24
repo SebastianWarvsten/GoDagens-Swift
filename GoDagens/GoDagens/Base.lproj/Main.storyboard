@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Slumpa Mat-->
+        <!--Main Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainScreen" customModule="GoDagens" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,11 +18,30 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Slumpa Mat" image="house.circle" catalog="system" id="7SR-ub-kGx"/>
+                    <navigationItem key="navigationItem" id="5OP-mv-aJN"/>
+                    <connections>
+                        <segue destination="kxj-Gd-1dM" kind="show" identifier="showFoodSegue" id="tZQ-bP-2Hw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884.05797101449286" y="59.598214285714285"/>
+            <point key="canvasLocation" x="1794.2028985507247" y="59.598214285714285"/>
+        </scene>
+        <!--Food Description Screen-->
+        <scene sceneID="WfM-Cg-xRj">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="kxj-Gd-1dM" customClass="FoodDescriptionScreen" customModule="GoDagens" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xQw-LV-tWM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NBn-yy-ppl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5F9-dP-oIp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fhu-Ix-jB6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2713.04347826087" y="59.598214285714285"/>
         </scene>
         <!--Lägg till maträtt-->
         <scene sceneID="sjn-cd-aJX">
@@ -46,17 +65,37 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="OlX-dd-sEJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BD4-6z-roV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="YsS-oh-A0A"/>
+                        <segue destination="Vrk-A8-DEu" kind="relationship" relationship="viewControllers" id="YsS-oh-A0A"/>
                         <segue destination="Hmr-yL-EOa" kind="relationship" relationship="viewControllers" id="Hoz-CM-Bo0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYQ-Xy-UoP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-26.086956521739133" y="59.598214285714285"/>
+        </scene>
+        <!--Slumpa Mat-->
+        <scene sceneID="Kof-zt-S7K">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vrk-A8-DEu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Slumpa Mat" image="house.circle" catalog="system" id="7SR-ub-kGx"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fug-NZ-G72">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ibj-cu-oFo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqX-rB-1Xa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884.05797101449286" y="59.598214285714285"/>
         </scene>
     </scenes>
     <resources>
