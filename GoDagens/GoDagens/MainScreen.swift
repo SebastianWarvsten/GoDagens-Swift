@@ -86,17 +86,17 @@ class MainScreen: UIViewController {
                 for document in snapshot!.documents {
 
                     let namn = document.data()["Namn"]
-                    let descrip = document.data()["Beskrivning"]
                     let imageURL = document.data()["imageURL"]
                     let time = document.data()["Tillagningstid"]
                     let ingredients = document.data()["Ingredienser"]
+                    let descrip = document.data()["Beskrivning"]
                     
                     var foodObject = FoodModel()
                     foodObject.name = namn as! String
                     foodObject.imageURL = imageURL as! String
+                    foodObject.time = time as! Int
                     foodObject.ingrediets = ingredients as! [String]
                     foodObject.descrip = descrip as! String
-                    foodObject.time = time as! Int
                     self.matArray.append(foodObject)
                 }
                 if self.imageView.image == nil {
