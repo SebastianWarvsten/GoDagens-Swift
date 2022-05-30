@@ -48,7 +48,6 @@ class FoodDescriptionScreen: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
-        imageView.backgroundColor = .black
         return imageView
     }()
     
@@ -96,7 +95,7 @@ class FoodDescriptionScreen: UIViewController {
         contentView.addSubview(ingredientsTextView)
         contentView.addSubview(descriptionTextView)
         
-        imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+200, width: 300, height: 300)
+        imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+100, width: 300, height: 300)
         getRandomFood()
         
         updateImageView.isUserInteractionEnabled = true
@@ -105,12 +104,12 @@ class FoodDescriptionScreen: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        nameTextView.frame = CGRect(x: 50, y: 0, width: 300, height: 200)
+        nameTextView.frame = CGRect(x: 50, y: 0, width: 300, height: 100)
         nameTextView.centerVertically()
         updateImageView.frame = CGRect(x: view.frame.width-35, y: view.safeAreaInsets.top+10, width: 30, height: 30)
-        timeTextView.frame = CGRect(x: 50, y: 500, width: 100, height: 50)
-        ingredientsTextView.frame = CGRect(x: 50, y: 550, width: 200, height: 200)
-        descriptionTextView.frame = CGRect(x: 50, y: 750, width: 300, height: 200)
+        timeTextView.frame = CGRect(x: 50, y: 400, width: 100, height: 50)
+        ingredientsTextView.frame = CGRect(x: 50, y: 450, width: 200, height: 150)
+        descriptionTextView.frame = CGRect(x: 50, y: 600, width: 300, height: 200)
     }
     
     @objc func updateTapped() {
@@ -121,12 +120,13 @@ class FoodDescriptionScreen: UIViewController {
             updateImageView.image = updateSymbol
             nameTextView.isEditable = true
             timeTextView.isEditable = true
+            descriptionTextView.isEditable = true
         }else {
             // Dra ut till en funktion där symbol och textviews är argument
             updateImageView.image = editSymbol
             nameTextView.isEditable = false
             timeTextView.isEditable = false
-            // Spara uppdateringen till firebase
+            descriptionTextView.isEditable = false
             updateFood()
         }
     }
@@ -134,10 +134,13 @@ class FoodDescriptionScreen: UIViewController {
     func updateFood() {
         let selectedID = matArray[selectedFood].id!
         let namn = nameTextView.text
-        let tillagningstid = timeTextView.text
+        let tillagningstid: Int? = Int(timeTextView.text!.replacingOccurrences(of: " min", with: ""))
+        let beskrivning = descriptionTextView.text
+        
         db.collection("Food").document(selectedID).updateData([
             "Namn": namn ?? "Maträtt",
-            "Tillagningstid": tillagningstid ?? 10
+            "Tillagningstid": tillagningstid ?? 10,
+            "Beskrivning": beskrivning
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
