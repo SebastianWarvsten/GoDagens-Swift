@@ -77,6 +77,7 @@ class AddFoodScreen: UIViewController {
     
     // Add new collection to Firebase
         @objc func addFood() {
+            let newDocument = db.collection("Food").document()
             let namn = nameTextField.text ?? "Maträtt"
             let beskrivning = descriptionTextField.text ?? "Laga i stekpannan osv"
             var imageURL: String;
@@ -87,7 +88,7 @@ class AddFoodScreen: UIViewController {
             }
             let ingredienser = [String](["Gurka", "Tomat", "Skinka"])
             let tillagningstid = 10
-            
-            db.collection("Food").addDocument(data: ["Namn": namn, "Beskrivning": beskrivning, "Tillagningstid": tillagningstid, "imageURL": imageURL, "Ingredienser": ingredienser])
+
+            newDocument.setData(["Namn": namn, "Beskrivning": beskrivning, "Tillagningstid": tillagningstid, "imageURL": imageURL, "Ingredienser": ingredienser, "id": newDocument.documentID])
         }
 }

@@ -90,6 +90,7 @@ class MainScreen: UIViewController {
                     let time = document.data()["Tillagningstid"]
                     let ingredients = document.data()["Ingredienser"]
                     let descrip = document.data()["Beskrivning"]
+                    let id = document.data()["id"]
                     
                     var foodObject = FoodModel()
                     foodObject.name = namn as! String
@@ -97,6 +98,7 @@ class MainScreen: UIViewController {
                     foodObject.time = time as! Int
                     foodObject.ingrediets = ingredients as! [String]
                     foodObject.descrip = descrip as! String
+                    foodObject.id = id as! String
                     self.matArray.append(foodObject)
                 }
                 if self.imageView.image == nil {

@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class FoodDescriptionScreen: UIViewController {
+    
+    let db = Firestore.firestore()
     
     private lazy var scroller: UIScrollView = {
         let scroller = UIScrollView(frame: .zero)
@@ -111,16 +114,36 @@ class FoodDescriptionScreen: UIViewController {
     }
     
     @objc func updateTapped() {
-        let stopSymbol = UIImage(systemName: "xmark.circle")
+        let updateSymbol = UIImage(systemName: "square.and.arrow.down")
         let editSymbol = UIImage(systemName: "square.and.pencil")
         if(updateImageView.image == editSymbol){
-            updateImageView.image = stopSymbol
+            // Dra ut till en funktion där symbol och textviews är argument
+            updateImageView.image = updateSymbol
             nameTextView.isEditable = true
-            print("Enable editing")
+            timeTextView.isEditable = true
         }else {
+            // Dra ut till en funktion där symbol och textviews är argument
             updateImageView.image = editSymbol
             nameTextView.isEditable = false
-            print("Dissable edeting")
+            timeTextView.isEditable = false
+            // Spara uppdateringen till firebase
+            updateFood()
+        }
+    }
+    
+    func updateFood() {
+        let selectedID = matArray[selectedFood].id!
+        let namn = nameTextView.text
+        let tillagningstid = timeTextView.text
+        db.collection("Food").document(selectedID).updateData([
+            "Namn": namn ?? "Maträtt",
+            "Tillagningstid": tillagningstid ?? 10
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
         }
     }
     
