@@ -95,6 +95,9 @@ class FoodDescriptionScreen: UIViewController {
         
         imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+200, width: 300, height: 300)
         getRandomFood()
+        
+        updateImageView.isUserInteractionEnabled = true
+        updateImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.updateTapped)))
     }
     
     override func viewDidLayoutSubviews() {
@@ -105,6 +108,20 @@ class FoodDescriptionScreen: UIViewController {
         timeTextView.frame = CGRect(x: 50, y: 500, width: 100, height: 50)
         ingredientsTextView.frame = CGRect(x: 50, y: 550, width: 200, height: 200)
         descriptionTextView.frame = CGRect(x: 50, y: 750, width: 300, height: 200)
+    }
+    
+    @objc func updateTapped() {
+        let stopSymbol = UIImage(systemName: "xmark.circle")
+        let editSymbol = UIImage(systemName: "square.and.pencil")
+        if(updateImageView.image == editSymbol){
+            updateImageView.image = stopSymbol
+            nameTextView.isEditable = true
+            print("Enable editing")
+        }else {
+            updateImageView.image = editSymbol
+            nameTextView.isEditable = false
+            print("Dissable edeting")
+        }
     }
     
     @objc func getRandomFood() {
