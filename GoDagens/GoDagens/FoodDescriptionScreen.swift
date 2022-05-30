@@ -25,6 +25,13 @@ class FoodDescriptionScreen: UIViewController {
         return nview
     }()
     
+    private let updateImageView: UIImageView = {
+        let imageView = UIImageView()
+        let symbol = UIImage(systemName: "square.and.pencil")
+        imageView.image = symbol
+        return imageView
+    }()
+    
     private let nameTextView: UITextView = {
         let textView = UITextView()
         textView.text = "Maträttens namn"
@@ -78,9 +85,9 @@ class FoodDescriptionScreen: UIViewController {
 
         view.addSubview(scroller)
         scroller.addSubview(contentView)
-        contentView.addSubview(nameTextView)
         
         contentView.addSubview(nameTextView)
+        contentView.addSubview(updateImageView)
         contentView.addSubview(imageView)
         contentView.addSubview(timeTextView)
         contentView.addSubview(ingredientsTextView)
@@ -94,6 +101,7 @@ class FoodDescriptionScreen: UIViewController {
         super.viewDidLayoutSubviews()
         nameTextView.frame = CGRect(x: 50, y: 0, width: 300, height: 200)
         nameTextView.centerVertically()
+        updateImageView.frame = CGRect(x: view.frame.width-35, y: view.safeAreaInsets.top+10, width: 30, height: 30)
         timeTextView.frame = CGRect(x: 50, y: 500, width: 100, height: 50)
         ingredientsTextView.frame = CGRect(x: 50, y: 550, width: 200, height: 200)
         descriptionTextView.frame = CGRect(x: 50, y: 750, width: 300, height: 200)
