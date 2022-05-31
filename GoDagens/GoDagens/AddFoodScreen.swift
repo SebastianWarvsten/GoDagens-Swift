@@ -12,11 +12,13 @@ import Firebase
 class AddFoodScreen: UIViewController {
     
     let db = Firestore.firestore()
+    let gradiantLayer = CAGradientLayer()
     
     private let nameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Matens namn"
+        textField.placeholder = "Maträttens namn"
         textField.borderStyle = .line
+        textField.backgroundColor = .white
         return textField
     }()
     
@@ -24,25 +26,35 @@ class AddFoodScreen: UIViewController {
         let textField = UITextField()
         textField.placeholder = "https://image.com"
         textField.borderStyle = .line
+        textField.backgroundColor = .white
         return textField
     }()
     
     private let descriptionTextField: UITextView = {
-        let textField = UITextView()
-        textField.layer.borderWidth = 1
-        return textField
+        let textView = UITextView()
+        textView.layer.borderWidth = 1
+        textView.backgroundColor = .white
+        return textView
     }()
     
     private let addButton: UIButton = {
         let button = UIButton()
         button.setTitle("Lägg till maträtt", for: .normal)
-        button.backgroundColor = .cyan
-        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.setTitleColor(.white, for: .normal)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        gradiantLayer.frame = view.bounds
+        gradiantLayer.colors = [
+            UIColor.blue.cgColor,
+            UIColor.green.cgColor,
+            UIColor.yellow.cgColor
+        ]
+        view.layer.addSublayer(gradiantLayer)
         
         // Add UI
         view.addSubview(nameTextField)

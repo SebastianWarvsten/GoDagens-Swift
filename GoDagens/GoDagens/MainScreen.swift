@@ -11,11 +11,13 @@ import Firebase
 class MainScreen: UIViewController {
 
     let db = Firestore.firestore()
+    let gradiantLayer = CAGradientLayer()
     
     private let textView: UITextView = {
         let textView = UITextView()
         textView.text = "Maträttens namn"
-        textView.textColor = .black
+        textView.textColor = .white
+        textView.backgroundColor = .clear
         textView.font = UIFont(name: textView.font!.fontName, size: 25)
         textView.textAlignment = .center
         textView.isEditable = false
@@ -26,12 +28,14 @@ class MainScreen: UIViewController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.backgroundColor = .black
+        imageView.layer.cornerRadius = 20.0
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     private let randomButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .lightGray
+        button.backgroundColor = .systemBlue
         button.setTitle("Föreslå mat", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
@@ -43,6 +47,13 @@ class MainScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gradiantLayer.frame = view.bounds
+        gradiantLayer.colors = [
+            UIColor.blue.cgColor,
+            UIColor.green.cgColor,
+            UIColor.yellow.cgColor
+        ]
+        view.layer.addSublayer(gradiantLayer)
         view.addSubview(textView)
         
         view.addSubview(imageView)

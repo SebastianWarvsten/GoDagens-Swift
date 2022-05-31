@@ -12,6 +12,7 @@ import Firebase
 class FoodDescriptionScreen: UIViewController {
     
     let db = Firestore.firestore()
+    let gradiantLayer = CAGradientLayer()
     
     private lazy var scroller: UIScrollView = {
         let scroller = UIScrollView(frame: .zero)
@@ -32,13 +33,15 @@ class FoodDescriptionScreen: UIViewController {
         let imageView = UIImageView()
         let symbol = UIImage(systemName: "square.and.pencil")
         imageView.image = symbol
+        imageView.tintColor = .white
         return imageView
     }()
     
     private let nameTextView: UITextView = {
         let textView = UITextView()
         textView.text = "Maträttens namn"
-        textView.textColor = .black
+        textView.textColor = .white
+        textView.backgroundColor = .clear
         textView.font = UIFont(name: textView.font!.fontName, size: 25)
         textView.textAlignment = .center
         textView.isEditable = false
@@ -48,6 +51,8 @@ class FoodDescriptionScreen: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = 20.0
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -55,6 +60,7 @@ class FoodDescriptionScreen: UIViewController {
         let textView = UITextView()
         textView.text = "5"
         textView.textColor = .black
+        textView.backgroundColor = .clear
         textView.font = UIFont(name: textView.font!.fontName, size: 18)
         textView.isEditable = false
         return textView
@@ -64,6 +70,7 @@ class FoodDescriptionScreen: UIViewController {
         let textView = UITextView()
         textView.text = "Beskrivning om maten"
         textView.textColor = .black
+        textView.backgroundColor = .clear
         textView.font = UIFont(name: textView.font!.fontName, size: 18)
         textView.isEditable = false
         return textView
@@ -73,6 +80,7 @@ class FoodDescriptionScreen: UIViewController {
         let textView = UITextView()
         textView.text = "Beskrivning om maten"
         textView.textColor = .black
+        textView.backgroundColor = .clear
         textView.font = UIFont(name: textView.font!.fontName, size: 18)
         textView.isEditable = false
         return textView
@@ -85,6 +93,14 @@ class FoodDescriptionScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        gradiantLayer.frame = view.bounds
+        gradiantLayer.colors = [
+            UIColor.blue.cgColor,
+            UIColor.green.cgColor,
+            UIColor.yellow.cgColor
+        ]
+        view.layer.addSublayer(gradiantLayer)
+        
         view.addSubview(scroller)
         scroller.addSubview(contentView)
         
@@ -108,8 +124,8 @@ class FoodDescriptionScreen: UIViewController {
         nameTextView.centerVertically()
         updateImageView.frame = CGRect(x: view.frame.width-35, y: view.safeAreaInsets.top+10, width: 30, height: 30)
         timeTextView.frame = CGRect(x: 50, y: 400, width: 100, height: 50)
-        ingredientsTextView.frame = CGRect(x: 50, y: 450, width: 200, height: 150)
-        descriptionTextView.frame = CGRect(x: 50, y: 600, width: 300, height: 200)
+        ingredientsTextView.frame = CGRect(x: 50, y: 450, width: 300, height: 150)
+        descriptionTextView.frame = CGRect(x: 50, y: 610, width: 300, height: 200)
     }
     
     @objc func updateTapped() {
@@ -140,7 +156,7 @@ class FoodDescriptionScreen: UIViewController {
         db.collection("Food").document(selectedID).updateData([
             "Namn": namn ?? "Maträtt",
             "Tillagningstid": tillagningstid ?? 10,
-            "Beskrivning": beskrivning
+            "Beskrivning": beskrivning ?? "Tillaga som vanligt"
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
