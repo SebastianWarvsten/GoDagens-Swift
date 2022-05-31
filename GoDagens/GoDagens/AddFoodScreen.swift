@@ -14,6 +14,26 @@ class AddFoodScreen: UIViewController {
     let db = Firestore.firestore()
     let gradiantLayer = CAGradientLayer()
     
+    private let nameLabel: UILabel = {
+        let nameLabel = UILabel()
+        nameLabel.text = "Maträtt:"
+        nameLabel.textColor = .white
+        return nameLabel
+    }()
+    
+    private let imageURLLabel: UILabel = {
+        let imageURLLabel = UILabel()
+        imageURLLabel.text = "Bild URL:"
+        imageURLLabel.textColor = .white
+        return imageURLLabel
+    }()
+    
+    private let descriptionLabel: UILabel = {
+        let descriptionLabel = UILabel()
+        descriptionLabel.text = "Beskrivning:"
+        return descriptionLabel
+    }()
+    
     private let nameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Maträttens namn"
@@ -57,8 +77,11 @@ class AddFoodScreen: UIViewController {
         view.layer.addSublayer(gradiantLayer)
         
         // Add UI
+        view.addSubview(nameLabel)
         view.addSubview(nameTextField)
+        view.addSubview(imageURLLabel)
         view.addSubview(imageURLTextField)
+        view.addSubview(descriptionLabel)
         view.addSubview(descriptionTextField)
         view.addSubview(addButton)
         
@@ -69,11 +92,14 @@ class AddFoodScreen: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        nameTextField.frame = CGRect(x: 50, y: view.safeAreaInsets.top, width: view.frame.size.width-100, height: 30)
+        nameLabel.frame = CGRect(x: 50, y: view.safeAreaInsets.top, width: view.frame.size.width-100, height: 30)
+        nameTextField.frame = CGRect(x: 50, y: view.safeAreaInsets.top+30, width: view.frame.size.width-100, height: 30)
         
-        imageURLTextField.frame = CGRect(x: 50, y: view.safeAreaInsets.top+40, width: view.frame.size.width-100, height: 30)
+        imageURLLabel.frame = CGRect(x: 50, y: view.safeAreaInsets.top+70, width: view.frame.size.width-100, height: 30)
+        imageURLTextField.frame = CGRect(x: 50, y: view.safeAreaInsets.top+100, width: view.frame.size.width-100, height: 30)
         
-        descriptionTextField.frame = CGRect(x: (view.frame.width-300)/2, y: 480, width: 300, height: 280)
+        descriptionLabel.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+400, width: view.frame.size.width-100, height: 30)
+        descriptionTextField.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+430, width: view.frame.size.width-100, height: 200)
         
         addButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
     }
