@@ -50,7 +50,7 @@ class AddFoodScreen: UIViewController {
         return textField
     }()
     
-    private let descriptionTextField: UITextView = {
+    private let descriptionTextView: UITextView = {
         let textView = UITextView()
         textView.layer.borderWidth = 1
         textView.backgroundColor = .white
@@ -82,7 +82,7 @@ class AddFoodScreen: UIViewController {
         view.addSubview(imageURLLabel)
         view.addSubview(imageURLTextField)
         view.addSubview(descriptionLabel)
-        view.addSubview(descriptionTextField)
+        view.addSubview(descriptionTextView)
         view.addSubview(addButton)
         
         // Startup functionality
@@ -99,7 +99,7 @@ class AddFoodScreen: UIViewController {
         imageURLTextField.frame = CGRect(x: 50, y: view.safeAreaInsets.top+100, width: view.frame.size.width-100, height: 30)
         
         descriptionLabel.frame = CGRect(x: 50, y: view.frame.size.height-300-view.safeAreaInsets.bottom, width: view.frame.size.width-100, height: 30)
-        descriptionTextField.frame = CGRect(x: 50, y: view.frame.size.height-270-view.safeAreaInsets.bottom, width: view.frame.size.width-100, height: 200)
+        descriptionTextView.frame = CGRect(x: 50, y: view.frame.size.height-270-view.safeAreaInsets.bottom, width: view.frame.size.width-100, height: 200)
         
         addButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
     }
@@ -117,7 +117,7 @@ class AddFoodScreen: UIViewController {
         @objc func addFood() {
             let newDocument = db.collection("Food").document()
             let namn = nameTextField.text ?? "Maträtt"
-            let beskrivning = descriptionTextField.text ?? "Laga i stekpannan osv"
+            let beskrivning = descriptionTextView.text ?? "Laga i stekpannan osv"
             var imageURL: String;
             if (imageURLTextField.text != nil) && (imageURLTextField.text!.count > 0) {
                 imageURL = imageURLTextField.text!
@@ -128,5 +128,6 @@ class AddFoodScreen: UIViewController {
             let tillagningstid = 10
 
             newDocument.setData(["Namn": namn, "Beskrivning": beskrivning, "Tillagningstid": tillagningstid, "imageURL": imageURL, "Ingredienser": ingredienser, "id": newDocument.documentID])
+            clearAllFields(name: nameTextField, imageURL: imageURLTextField, descrip: descriptionTextView)
         }
 }
