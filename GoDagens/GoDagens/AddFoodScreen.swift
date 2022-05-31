@@ -98,8 +98,8 @@ class AddFoodScreen: UIViewController {
         imageURLLabel.frame = CGRect(x: 50, y: view.safeAreaInsets.top+70, width: view.frame.size.width-100, height: 30)
         imageURLTextField.frame = CGRect(x: 50, y: view.safeAreaInsets.top+100, width: view.frame.size.width-100, height: 30)
         
-        descriptionLabel.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+400, width: view.frame.size.width-100, height: 30)
-        descriptionTextField.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+430, width: view.frame.size.width-100, height: 200)
+        descriptionLabel.frame = CGRect(x: 50, y: view.frame.size.height-300-view.safeAreaInsets.bottom, width: view.frame.size.width-100, height: 30)
+        descriptionTextField.frame = CGRect(x: 50, y: view.frame.size.height-270-view.safeAreaInsets.bottom, width: view.frame.size.width-100, height: 200)
         
         addButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
     }

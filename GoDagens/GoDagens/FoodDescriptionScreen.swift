@@ -120,12 +120,12 @@ class FoodDescriptionScreen: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        nameTextView.frame = CGRect(x: 50, y: 0, width: 300, height: 100)
+        nameTextView.frame = CGRect(x: 50, y: 0, width: view.frame.size.width-100, height: 100)
         nameTextView.centerVertically()
         updateImageView.frame = CGRect(x: view.frame.width-35, y: view.safeAreaInsets.top+10, width: 30, height: 30)
-        timeTextView.frame = CGRect(x: 50, y: 400, width: 100, height: 50)
-        ingredientsTextView.frame = CGRect(x: 50, y: 450, width: 300, height: 150)
-        descriptionTextView.frame = CGRect(x: 50, y: 610, width: 300, height: 200)
+        timeTextView.frame = CGRect(x: 50, y: 400, width: view.frame.size.width-100, height: 50)
+        ingredientsTextView.frame = CGRect(x: 50, y: 450, width: view.frame.size.width-100, height: 150)
+        descriptionTextView.frame = CGRect(x: 50, y: 610, width: view.frame.size.width-100, height: 200)
     }
     
     @objc func updateTapped() {

@@ -57,7 +57,7 @@ class MainScreen: UIViewController {
         view.addSubview(textView)
         
         view.addSubview(imageView)
-        imageView.frame = CGRect(x: (view.frame.width-300)/2, y: view.safeAreaInsets.top+200, width: 300, height: 300)
+        imageView.frame = CGRect(x: 50, y: view.safeAreaInsets.top+200, width: view.frame.size.width-100, height: view.frame.size.width-100)
         
         view.addSubview(randomButton)
         randomButton.addTarget(self, action: #selector(getRandomFood), for: .touchUpInside)
@@ -68,7 +68,7 @@ class MainScreen: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        textView.frame = CGRect(x: 50, y: 50, width: 300, height: 200)
+        textView.frame = CGRect(x: 50, y: 50, width: view.frame.size.width-100, height: 200)
         textView.centerVertically()
         
         randomButton.frame = CGRect(x: 20, y: view.frame.size.height-50-view.safeAreaInsets.bottom, width: view.frame.size.width-40, height: 50)
