@@ -162,6 +162,7 @@ class FoodDescriptionScreen: UIViewController {
                 print("Error updating document: \(err)")
             } else {
                 print("Document successfully updated")
+                self.alertbox()
             }
         }
     }
@@ -176,5 +177,20 @@ class FoodDescriptionScreen: UIViewController {
         self.timeTextView.text = String(self.matArray[self.selectedFood].time).appending(" min")
         self.ingredientsTextView.text = self.matArray[self.selectedFood].ingrediets.joined(separator: "\n")
         self.descriptionTextView.text = self.matArray[self.selectedFood].descrip
+    }
+    
+    func alertbox() {
+        let alert = UIAlertController(title: "\(self.matArray[self.selectedFood].name) uppdaterad", message: "\(self.matArray[self.selectedFood].name) har blivit uppdaterad", preferredStyle: UIAlertController.Style.alert)
+
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
+        
+        let when = DispatchTime.now() + 3
+        DispatchQueue.main.asyncAfter(deadline: when){
+          // your code with delay
+          alert.dismiss(animated: true, completion: nil)
+        }
     }
 }
