@@ -47,6 +47,7 @@ class AddFoodScreen: UIViewController {
         textField.placeholder = "https://image.com"
         textField.borderStyle = .line
         textField.backgroundColor = .white
+        textField.autocapitalizationType = .none
         return textField
     }()
     
@@ -60,7 +61,8 @@ class AddFoodScreen: UIViewController {
     private let addButton: UIButton = {
         let button = UIButton()
         button.setTitle("Lägg till maträtt", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.isEnabled = false
+        button.backgroundColor = .gray
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -87,7 +89,10 @@ class AddFoodScreen: UIViewController {
         
         // Startup functionality
         addButton.addTarget(self, action: #selector(addFood), for: .touchUpInside)
-        addButton.addTarget(self, action: #selector(alertbox), for: .touchUpInside)
+        nameTextField.addTarget(self, action: #selector(AddFoodScreen.textFieldDidChange(_:)),
+                                  for: .editingChanged)
+        imageURLTextField.addTarget(self, action: #selector(AddFoodScreen.textFieldDidChange(_:)),
+                                  for: .editingChanged)
     }
     
     override func viewDidLayoutSubviews() {
@@ -129,5 +134,21 @@ class AddFoodScreen: UIViewController {
 
             newDocument.setData(["Namn": namn, "Beskrivning": beskrivning, "Tillagningstid": tillagningstid, "imageURL": imageURL, "Ingredienser": ingredienser, "id": newDocument.documentID])
             clearAllFields(name: nameTextField, imageURL: imageURLTextField, descrip: descriptionTextView)
+            alertbox()
+            disableButton(button: addButton)
         }
+    
+    func allFieldsValid() -> Bool {
+        return (isNameTextFieldValid(nameTextField: nameTextField) && isImageURLValid(imageURLTextField: imageURLTextField))
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if(allFieldsValid()){
+            addButton.isEnabled = true
+            addButton.backgroundColor = .blue
+        } else {
+            addButton.isEnabled = false
+            addButton.backgroundColor = .gray
+        }
+    }
 }
