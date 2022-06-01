@@ -109,7 +109,7 @@ class MainScreen: UIViewController {
                     foodObject.time = time as! Int
                     foodObject.ingrediets = ingredients as! [String]
                     foodObject.descrip = descrip as! String
-                    foodObject.id = id as! String
+                    foodObject.id = id as? String
                     self.matArray.append(foodObject)
                 }
                 if self.imageView.image == nil {

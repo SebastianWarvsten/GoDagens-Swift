@@ -137,12 +137,20 @@ class FoodDescriptionScreen: UIViewController {
             nameTextView.isEditable = true
             timeTextView.isEditable = true
             descriptionTextView.isEditable = true
+            nameTextView.textColor = .black
+            changeBackgroundColor(textView: nameTextView, isEditing: true)
+            changeBackgroundColor(textView: timeTextView, isEditing: true)
+            changeBackgroundColor(textView: descriptionTextView, isEditing: true)
         }else {
             // Dra ut till en funktion där symbol och textviews är argument
             updateImageView.image = editSymbol
             nameTextView.isEditable = false
             timeTextView.isEditable = false
             descriptionTextView.isEditable = false
+            nameTextView.textColor = .white
+            changeBackgroundColor(textView: nameTextView, isEditing: false)
+            changeBackgroundColor(textView: timeTextView, isEditing: false)
+            changeBackgroundColor(textView: descriptionTextView, isEditing: false)
             updateFood()
         }
     }

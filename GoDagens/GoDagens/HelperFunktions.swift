@@ -28,6 +28,13 @@ func changeBorderColor(textField: UITextField, textFieldIntpuIsValid: Bool) {
         textField.layer.borderWidth = 1
     }
 }
+func changeBackgroundColor(textView: UITextView, isEditing: Bool) {
+    if(isEditing) {
+        textView.backgroundColor = .white
+    } else {
+        textView.backgroundColor = .clear
+    }
+}
 
 func clearAllFields(name: UITextField, imageURL: UITextField, descrip: UITextView) {
     name.text = nil
