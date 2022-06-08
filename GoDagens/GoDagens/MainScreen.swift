@@ -11,7 +11,12 @@ import Firebase
 class MainScreen: UIViewController {
 
     let db = Firestore.firestore()
-    let gradiantLayer = CAGradientLayer()
+    
+    private let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "blueTextureBackground")
+        return imageView
+    }()
     
     private let textView: UITextView = {
         let textView = UITextView()
@@ -47,14 +52,8 @@ class MainScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gradiantLayer.frame = view.bounds
-        gradiantLayer.colors = [
-            UIColor.blue.cgColor,
-            UIColor.green.cgColor,
-            UIColor.yellow.cgColor
-        ]
-        view.layer.addSublayer(gradiantLayer)
-        view.addSubview(textView)
+        backgroundImageView.frame = view.bounds
+        view.addSubview(backgroundImageView)
         
         view.addSubview(imageView)
         imageView.frame = CGRect(x: 50, y: view.safeAreaInsets.top+200, width: view.frame.size.width-100, height: view.frame.size.width-100)

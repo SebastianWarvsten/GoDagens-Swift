@@ -12,7 +12,12 @@ import Firebase
 class FoodDescriptionScreen: UIViewController {
     
     let db = Firestore.firestore()
-    let gradiantLayer = CAGradientLayer()
+    
+    private let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "blueTextureBackground")
+        return imageView
+    }()
     
     private lazy var scroller: UIScrollView = {
         let scroller = UIScrollView(frame: .zero)
@@ -59,7 +64,7 @@ class FoodDescriptionScreen: UIViewController {
     private let timeTextView: UITextView = {
         let textView = UITextView()
         textView.text = "5"
-        textView.textColor = .black
+        textView.textColor = .white
         textView.backgroundColor = .clear
         textView.font = UIFont(name: textView.font!.fontName, size: 18)
         textView.isEditable = false
@@ -69,7 +74,7 @@ class FoodDescriptionScreen: UIViewController {
     private let ingredientsTextView: UITextView = {
         let textView = UITextView()
         textView.text = "Beskrivning om maten"
-        textView.textColor = .black
+        textView.textColor = .white
         textView.backgroundColor = .clear
         textView.font = UIFont(name: textView.font!.fontName, size: 18)
         textView.isEditable = false
@@ -79,7 +84,7 @@ class FoodDescriptionScreen: UIViewController {
     private let descriptionTextView: UITextView = {
         let textView = UITextView()
         textView.text = "Beskrivning om maten"
-        textView.textColor = .black
+        textView.textColor = .white
         textView.backgroundColor = .clear
         textView.font = UIFont(name: textView.font!.fontName, size: 18)
         textView.isEditable = false
@@ -93,13 +98,8 @@ class FoodDescriptionScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        gradiantLayer.frame = view.bounds
-        gradiantLayer.colors = [
-            UIColor.blue.cgColor,
-            UIColor.green.cgColor,
-            UIColor.yellow.cgColor
-        ]
-        view.layer.addSublayer(gradiantLayer)
+        backgroundImageView.frame = view.bounds
+        view.addSubview(backgroundImageView)
         
         view.addSubview(scroller)
         scroller.addSubview(contentView)
@@ -137,7 +137,7 @@ class FoodDescriptionScreen: UIViewController {
             nameTextView.isEditable = true
             timeTextView.isEditable = true
             descriptionTextView.isEditable = true
-            nameTextView.textColor = .black
+            nameTextView.textColor = .white
             changeBackgroundColor(textView: nameTextView, isEditing: true)
             changeBackgroundColor(textView: timeTextView, isEditing: true)
             changeBackgroundColor(textView: descriptionTextView, isEditing: true)

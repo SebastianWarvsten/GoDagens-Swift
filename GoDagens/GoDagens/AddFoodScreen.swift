@@ -12,7 +12,11 @@ import Firebase
 class AddFoodScreen: UIViewController {
     
     let db = Firestore.firestore()
-    let gradiantLayer = CAGradientLayer()
+    private let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "blueTextureBackground")
+        return imageView
+    }()
     
     private let nameLabel: UILabel = {
         let nameLabel = UILabel()
@@ -31,6 +35,7 @@ class AddFoodScreen: UIViewController {
     private let descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
         descriptionLabel.text = "Beskrivning:"
+        descriptionLabel.textColor = .white
         return descriptionLabel
     }()
     
@@ -70,13 +75,8 @@ class AddFoodScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gradiantLayer.frame = view.bounds
-        gradiantLayer.colors = [
-            UIColor.blue.cgColor,
-            UIColor.green.cgColor,
-            UIColor.yellow.cgColor
-        ]
-        view.layer.addSublayer(gradiantLayer)
+        backgroundImageView.frame = view.bounds
+        view.addSubview(backgroundImageView)
         
         // Add UI
         view.addSubview(nameLabel)
