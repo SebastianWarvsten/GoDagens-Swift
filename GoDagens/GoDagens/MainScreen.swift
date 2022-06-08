@@ -55,6 +55,8 @@ class MainScreen: UIViewController {
         backgroundImageView.frame = view.bounds
         view.addSubview(backgroundImageView)
         
+        view.addSubview(textView)
+        
         view.addSubview(imageView)
         imageView.frame = CGRect(x: 50, y: view.safeAreaInsets.top+200, width: view.frame.size.width-100, height: view.frame.size.width-100)
         
