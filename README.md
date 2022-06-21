@@ -7,4 +7,4 @@ One click is all you need and this app will suggest a dish so you don't have to 
 
 This and alot more will be comming to GoDagens shortly!
 
-![](previewImages/mainScreen.png) ![](previewImages/infoScreen.png) ![](previewImages/addScreen.png)
+<img src="previewImages/mainScreen.png" height=100> <img src="previewImages/infoScreen.png" height=100> <img src="previewImages/addScreen.png" height=100>
