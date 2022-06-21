@@ -6,3 +6,5 @@ Are you tired of the question "What should we eat today?" Do you lack imaginatio
 One click is all you need and this app will suggest a dish so you don't have to think about what you should eat ever again. In the case you would stand with an empty refigerator the app will aslso tell you what ingredients you need.
 
 This and alot more will be comming to GoDagens shortly!
+
+![](previewImages/mainScreen.png) ![](previewImages/infoScreen.png) ![](previewImages/addScreen.png)
